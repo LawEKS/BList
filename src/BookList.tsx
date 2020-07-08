@@ -162,9 +162,9 @@ function PageButtons({
     searchTerm,
   })
   return (
-    <Row>
+    <Row className="mb-4">
       <Col>
-        <ButtonGroup className="w-100">
+        <ButtonGroup className="w-100" size="lg">
           <LinkContainer to={prevPath}>
             <Button disabled={!prevEnabled}>Prev</Button>
           </LinkContainer>
