@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import ButtonGroup from "react-bootstrap/ButtonGroup"
-import Button from "react-bootstrap/Button"
+import { Link } from "react-router-dom"
 
 function Welcome() {
   return (
@@ -17,7 +17,7 @@ function Welcome() {
       <Row>
         <Col>
           <ButtonGroup>
-            <Button>Click to explore</Button>
+            <Link to="/explore">Click to explore</Link>
           </ButtonGroup>
         </Col>
       </Row>
