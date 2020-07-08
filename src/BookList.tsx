@@ -9,11 +9,13 @@ import Form from "react-bootstrap/Form"
 import FormControl from "react-bootstrap/FormControl"
 import InputGroup from "react-bootstrap/InputGroup"
 import Image from "react-bootstrap/Image"
+import Media from "react-bootstrap/Media"
 import { useLocation, useHistory } from "react-router-dom"
 import { LinkContainer } from "react-router-bootstrap"
 
 import searchIcon from "./assets/search.svg"
 import searchLoadingIcon from "./assets/search-loading.svg"
+import bookIcon from "./assets/book.svg"
 
 import { postBooks, Book } from "./api"
 
@@ -65,6 +67,38 @@ function BooksRow({ children }: { children: React.ReactNode }) {
     </Row>
   )
 }
+
+function BookDetails({
+  book: {
+    id,
+    book_author,
+    book_title,
+    book_publication_year,
+    book_publication_country,
+    book_publication_city,
+    book_pages,
+  },
+}: {
+  book: Book
+}) {
+  return (
+    <Media as="li" className="mb-3">
+      <img width={32} height={32} className="mr-3" src={bookIcon} alt="book" />
+      <Media.Body>
+        <h5>{book_title}</h5>
+        <h6>{book_author}</h6>
+        <ul className="list-unstyled">
+          <li>Published {book_publication_year}</li>
+          <li>
+            {book_publication_city}, {book_publication_country}
+          </li>
+          <li>{book_pages} pages</li>
+        </ul>
+      </Media.Body>
+    </Media>
+  )
+}
+
 function Books({ bookData, loading }: { bookData: Book[]; loading: boolean }) {
   if (loading) {
     return (
@@ -83,16 +117,15 @@ function Books({ bookData, loading }: { bookData: Book[]; loading: boolean }) {
       </BooksRow>
     )
   }
+
+  function renderBook(book: Book) {
+    return <BookDetails key={book.id} book={book} />
+  }
+
   return (
-    <Row as="main" className="flex-grow-1">
-      <Col>
-        {JSON.stringify(
-          bookData.map(({ book_title }) => book_title),
-          null,
-          2,
-        )}
-      </Col>
-    </Row>
+    <BooksRow>
+      <ul className="list-unstyled">{bookData.map(renderBook)}</ul>
+    </BooksRow>
   )
 }
 
