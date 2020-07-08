@@ -6,13 +6,11 @@ import Welcome from "./Welcome"
 describe("Welcome content", () => {
   test("has project title", () => {
     const { getByText } = render(<Welcome />, { wrapper: MemoryRouter })
-    const headingElement = getByText(/blist/i)
-    expect(headingElement).toBeInTheDocument()
+    expect(getByText(/blist/i)).toBeInTheDocument()
   })
 
   test("has explore link", () => {
     const { getByText } = render(<Welcome />, { wrapper: MemoryRouter })
-    const exploreLink = getByText(/explore/i)
-    expect(exploreLink).toBeInTheDocument()
+    expect(getByText(/explore/i)).toBeInTheDocument()
   })
 })
