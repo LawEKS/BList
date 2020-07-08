@@ -214,11 +214,12 @@ function BookList() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    history.push(
-      `${location.pathname}?page=${pageNumber}&search=${encodeURI(
-        inputSearchValue,
-      )}`,
-    )
+
+    const searchParam = inputSearchValue.trim().length
+      ? `&search=${encodeURI(inputSearchValue)}`
+      : ""
+
+    history.push(`${location.pathname}?page=${pageNumber}${searchParam}`)
   }
 
   useEffect(() => {
