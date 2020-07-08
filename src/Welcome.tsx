@@ -17,7 +17,7 @@ function Welcome() {
       <Row>
         <Col>
           <ButtonGroup>
-            <Link to="/explore">Click to explore</Link>
+            <Link to="/explore?page=1">Click to explore</Link>
           </ButtonGroup>
         </Col>
       </Row>
