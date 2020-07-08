@@ -1,11 +1,11 @@
-describe("visible content", () => {
+describe("UI", () => {
   it("shows welcome screen", () => {
     cy.visit("/")
     cy.findByText("A destination for book discovery").should("be.visible")
     cy.findByText(/explore/i).should("be.visible")
   })
 
-  it("navigates to explore route and requests for page 1 of books", () => {
+  it("navigates to explore route then requests for page 1 of books", () => {
     // set up AJAX call interception
     cy.server()
     cy.route("POST", "**/api/books", "fixture:books_page_1").as("books-request")
@@ -16,13 +16,34 @@ describe("visible content", () => {
     cy.url().should("include", "explore")
     cy.url().should("include", "page=1")
 
-    // ... and AJAX call waiting
     cy.wait("@books-request").should((xhr) => {
       expect(xhr.status).to.equal(200)
       expect(xhr.response.body).to.contain.keys(["books", "count"])
     })
+  })
 
-    cy.findByText(/prev/i).should("be.disabled")
-    cy.findByText(/next/i).should("not.be.disabled")
+  it("disables correct buttons between first and last pages", () => {
+    cy.fixture("books_page_1").as("page-1")
+    cy.fixture("books_page_2").as("page-2")
+    cy.fixture("books_page_3").as("page-3")
+
+    cy.server()
+    cy.route("POST", "**/api/books", "@page-1").as("books-request-1")
+    cy.visit("/explore?page=1")
+    cy.wait("@books-request-1")
+    cy.findByText(/prev/i).should("be.have.class", "disabled")
+
+    // set up response stub and trigger navigation to page 2
+    cy.route("POST", "**/api/books", "@page-2").as("books-request-2")
+    cy.findByText(/next/i).click()
+    cy.wait("@books-request-2")
+
+    // set up response stub and trigger navigation to page 3
+    cy.route("POST", "**/api/books", "@page-3").as("books-request-3")
+    cy.findByText(/next/i).click()
+    cy.wait("@books-request-3")
+
+    // now on last page
+    cy.findByText(/next/i).should("be.have.class", "disabled")
   })
 })

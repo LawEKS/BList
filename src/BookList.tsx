@@ -6,6 +6,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup"
 import Button from "react-bootstrap/Button"
 import Spinner from "react-bootstrap/Spinner"
 import { useLocation } from "react-router-dom"
+import { LinkContainer } from "react-router-bootstrap"
 import { postBooks, Book } from "./api"
 
 function Header() {
@@ -54,19 +55,48 @@ function Books({ bookData, loading }: { bookData: Book[]; loading: boolean }) {
     </Row>
   )
 }
+
+function generateButtonLinkPaths({
+  pageNumber,
+  searchTerm = null,
+}: {
+  pageNumber: number
+  searchTerm: string | null
+}): { prevPath: string; nextPath: string } {
+  const [prevPath, nextPath] = [true, false].map((isPrev) => {
+    const pageParam = `page=${isPrev ? pageNumber - 1 : pageNumber + 1}`
+    const searchParam = searchTerm ? `&search=${searchTerm}` : ""
+    return `/explore?${pageParam}${searchParam}`
+  })
+
+  return { prevPath, nextPath }
+}
+
 function PageButtons({
   prevEnabled = false,
   nextEnabled = false,
+  pageNumber,
+  searchTerm,
 }: {
   prevEnabled: boolean
   nextEnabled: boolean
+  pageNumber: number
+  searchTerm: string | null
 }) {
+  const { prevPath, nextPath } = generateButtonLinkPaths({
+    pageNumber,
+    searchTerm,
+  })
   return (
     <Row>
       <Col>
         <ButtonGroup>
-          <Button disabled={!prevEnabled}>Prev</Button>
-          <Button disabled={!nextEnabled}>Next</Button>
+          <LinkContainer to={prevPath}>
+            <Button disabled={!prevEnabled}>Prev</Button>
+          </LinkContainer>
+          <LinkContainer to={nextPath}>
+            <Button disabled={!nextEnabled}>Next</Button>
+          </LinkContainer>
         </ButtonGroup>
       </Col>
     </Row>
@@ -116,6 +146,8 @@ function BookList() {
       <Header />
       <Books loading={loading} bookData={bookData} />
       <PageButtons
+        pageNumber={pageNumber}
+        searchTerm={searchTerm}
         nextEnabled={!!bookData.length && pageNumber < lastPage}
         prevEnabled={!!bookData.length && pageNumber > 1}
       />
