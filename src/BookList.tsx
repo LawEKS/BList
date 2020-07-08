@@ -10,6 +10,7 @@ import FormControl from "react-bootstrap/FormControl"
 import InputGroup from "react-bootstrap/InputGroup"
 import Image from "react-bootstrap/Image"
 import Media from "react-bootstrap/Media"
+import Jumbotron from "react-bootstrap/Jumbotron"
 import { useLocation, useHistory } from "react-router-dom"
 import { LinkContainer } from "react-router-bootstrap"
 
@@ -30,32 +31,32 @@ function Header({
 }) {
   return (
     <Row as="header">
-      <Col md="auto">
-        <h1>BList</h1>
-      </Col>
       <Col>
-        <Form
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}
-        >
-          <InputGroup>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                onSearchInputChange(event.target.value)
-              }
-            />
-            <InputGroup.Append>
-              <Button variant="primary" type="submit" className="py-0">
-                {loading ? (
-                  <Image src={searchLoadingIcon} alt="search-loading" />
-                ) : (
-                  <Image src={searchIcon} alt="search" />
-                )}
-              </Button>
-            </InputGroup.Append>
-          </InputGroup>
-        </Form>
+        <Jumbotron className="d-flex justify-content-start align-items-center">
+          <h1 className="mr-4 mb-0">BList</h1>
+          <Form
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}
+          >
+            <InputGroup>
+              <FormControl
+                type="text"
+                placeholder="Search"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  onSearchInputChange(event.target.value)
+                }
+              />
+              <InputGroup.Append>
+                <Button variant="primary" type="submit" className="py-0">
+                  {loading ? (
+                    <Image src={searchLoadingIcon} alt="search-loading" />
+                  ) : (
+                    <Image src={searchIcon} alt="search" />
+                  )}
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </Form>
+        </Jumbotron>
       </Col>
     </Row>
   )
@@ -163,7 +164,7 @@ function PageButtons({
   return (
     <Row>
       <Col>
-        <ButtonGroup>
+        <ButtonGroup className="w-100">
           <LinkContainer to={prevPath}>
             <Button disabled={!prevEnabled}>Prev</Button>
           </LinkContainer>
