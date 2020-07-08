@@ -1,0 +1,95 @@
+{
+  "books": [
+    {
+      "id": 2073,
+      "book_author": ["Άγγελος, Χριστόφορος (†1638)"],
+      "book_title": "De statu hodiernorum Graecorur",
+      "book_publication_year": 1676,
+      "book_publication_country": "Γερμανία",
+      "book_publication_city": "Λειψία",
+      "book_pages": 1104
+    },
+    {
+      "id": 2151,
+      "book_author": ["Δωρόθεος μητροπολίτης Μονεμβασίας"],
+      "book_title": "Ο Χρονογράφος",
+      "book_publication_year": 1676,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 598
+    },
+    {
+      "id": 2152,
+      "book_author": ["Δωρόθεος μητροπολίτης Μονεμβασίας"],
+      "book_title": "Βιβλίον Ιστορικόν",
+      "book_publication_year": 1676,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 594
+    },
+    {
+      "id": 2195,
+      "book_author": ["Διακρούσης, Άνθιμος-Ακάκιος ιερομόναχος\t"],
+      "book_title": "Διήγησις διά στίχων απλών του δεινού πολέμου του εν τη νήσω Κρήτη",
+      "book_publication_year": 1677,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 0
+    },
+    {
+      "id": 2249,
+      "book_author": ["Νεκτάριος Ιεροσολύμων (1602-1676)"],
+      "book_title": "Επιτομή της Ιεροκοσμικής Ιστορίας",
+      "book_publication_year": 1677,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 456
+    },
+    {
+      "id": 2074,
+      "book_author": ["Άγγελος, Χριστόφορος (†1638)"],
+      "book_title": "Περί της καταστάσεως των σήμερον ευρισκομένων Ελλήνων",
+      "book_publication_year": 1678,
+      "book_publication_country": "Ολλανδία",
+      "book_publication_city": "Franecker",
+      "book_pages": 128
+    },
+    {
+      "id": 2196,
+      "book_author": ["Διακρούσης, Άνθιμος-Ακάκιος ιερομόναχος\t"],
+      "book_title": "Διήγησις διά στίχων απλών του δεινού πολέμου του εν τη νήσω Κρήτη",
+      "book_publication_year": 1679,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 63
+    },
+    {
+      "id": 2339,
+      "book_author": ["Φίλιππος Πρωτονοτάριος Κύπριος († μετά το 1653)"],
+      "book_title": "Chronicon Ecclesiae Graecae",
+      "book_publication_year": 1679,
+      "book_publication_country": "Ολλανδία",
+      "book_publication_city": "Franecker",
+      "book_pages": 180
+    },
+    {
+      "id": 2093,
+      "book_author": ["Ανώνυμος"],
+      "book_title": "Ιστορία --- Αλεξάνδρου του Μακεδόνος",
+      "book_publication_year": 1681,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 120
+    },
+    {
+      "id": 2153,
+      "book_author": ["Δωρόθεος μητροπολίτης Μονεμβασίας"],
+      "book_title": "Βιβλίον Ιστορικόν",
+      "book_publication_year": 1681,
+      "book_publication_country": "Ιταλία",
+      "book_publication_city": "Βενετία",
+      "book_pages": 591
+    }
+  ],
+  "count": 50
+}
