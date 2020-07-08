@@ -46,4 +46,32 @@ describe("UI", () => {
     // now on last page
     cy.findByText(/next/i).should("be.have.class", "disabled")
   })
+
+  it("can search books and navigate pages", () => {
+    cy.server()
+    cy.route("POST", "**/api/books", "fixture:books_page_1").as("books-request")
+    cy.visit("/explore?page=1")
+    cy.wait("@books-request")
+
+    cy.fixture("search").then(({ city }) => {
+      cy.findByPlaceholderText(/search/i).type(city)
+
+      cy.route("POST", "**/api/books", "fixture:books_search_page_1").as(
+        "books-search-request-1",
+      )
+      cy.findByAltText("search").click()
+      cy.wait("@books-search-request-1")
+      cy.url().should("include", "page=1")
+      cy.url().should("include", `search=${encodeURI(city)}`)
+
+      cy.route("POST", "**/api/books", "fixture:books_search_page_2").as(
+        "books-search-request-2",
+      )
+      cy.findByText(/next/i).click()
+
+      cy.wait("@books-search-request-2")
+      cy.url().should("include", "page=2")
+      cy.url().should("include", `search=${encodeURI(city)}`)
+    })
+  })
 })

@@ -5,15 +5,55 @@ import Col from "react-bootstrap/Col"
 import ButtonGroup from "react-bootstrap/ButtonGroup"
 import Button from "react-bootstrap/Button"
 import Spinner from "react-bootstrap/Spinner"
-import { useLocation } from "react-router-dom"
+import Form from "react-bootstrap/Form"
+import FormControl from "react-bootstrap/FormControl"
+import InputGroup from "react-bootstrap/InputGroup"
+import Image from "react-bootstrap/Image"
+import { useLocation, useHistory } from "react-router-dom"
 import { LinkContainer } from "react-router-bootstrap"
+
+import searchIcon from "./assets/search.svg"
+import searchLoadingIcon from "./assets/search-loading.svg"
+
 import { postBooks, Book } from "./api"
 
-function Header() {
+function Header({
+  onSearchInputChange,
+  handleSubmit,
+  loading,
+}: {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  onSearchInputChange: (inputValue: string) => void
+  loading: boolean
+}) {
   return (
     <Row as="header">
-      <Col>
+      <Col md="auto">
         <h1>BList</h1>
+      </Col>
+      <Col>
+        <Form
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}
+        >
+          <InputGroup>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                onSearchInputChange(event.target.value)
+              }
+            />
+            <InputGroup.Append>
+              <Button variant="primary" type="submit" className="py-0">
+                {loading ? (
+                  <Image src={searchLoadingIcon} alt="search-loading" />
+                ) : (
+                  <Image src={searchIcon} alt="search" />
+                )}
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form>
       </Col>
     </Row>
   )
@@ -130,11 +170,31 @@ function BookList() {
   const searchTerm = query.get("search")
 
   const [lastPage, setLastPage] = useState(pageNumber)
+  const [inputSearchValue, setInputSearchValue] = useState("")
+  const location = useLocation()
+  const history = useHistory()
+
+  function onSearchInputChange(inputValue: string) {
+    setInputSearchValue(inputValue)
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    history.push(
+      `${location.pathname}?page=${pageNumber}&search=${encodeURI(
+        inputSearchValue,
+      )}`,
+    )
+  }
 
   useEffect(() => {
     setLoading(true)
     ;(async function requestBooksToRender() {
-      const data = await postBooks({ pageNumber, itemsPerPage, searchTerm })
+      const data = await postBooks({
+        pageNumber,
+        itemsPerPage,
+        searchTerm,
+      })
       setBookData(data.books)
       setLastPage(calculateLastPage(data.count, itemsPerPage))
       setLoading(false)
@@ -143,7 +203,11 @@ function BookList() {
 
   return (
     <Container className="d-flex flex-column min-vh-100">
-      <Header />
+      <Header
+        loading={loading}
+        onSearchInputChange={onSearchInputChange}
+        handleSubmit={handleSubmit}
+      />
       <Books loading={loading} bookData={bookData} />
       <PageButtons
         pageNumber={pageNumber}
