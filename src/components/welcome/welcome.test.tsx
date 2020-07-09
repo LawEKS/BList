@@ -1,7 +1,7 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
-import Welcome from "./Welcome"
+import Welcome from "."
 
 describe("Welcome content", () => {
   test("has project title", () => {
