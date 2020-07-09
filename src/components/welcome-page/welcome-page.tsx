@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col"
 import ButtonGroup from "react-bootstrap/ButtonGroup"
 import { Link } from "react-router-dom"
 
-function Welcome() {
+function WelcomePage() {
   return (
     <Container className="vh-100 d-flex flex-column justify-content-center align-items-center">
       <Row>
@@ -25,4 +25,4 @@ function Welcome() {
   )
 }
 
-export default Welcome
+export default WelcomePage
