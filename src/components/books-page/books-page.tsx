@@ -25,7 +25,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search)
 }
 
-function BookList() {
+function BooksPage() {
   const [bookData, setBookData] = useState<Book[]>([])
   const [itemsPerPage] = useState(20)
   const [loading, setLoading] = useState(true)
@@ -84,4 +84,4 @@ function BookList() {
   )
 }
 
-export default BookList
+export default BooksPage
