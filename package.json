@@ -11,8 +11,13 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -30,7 +35,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn test:integration"
+      "pre-push": "yarn build && yarn test:integration"
     }
   },
   "lint-staged": {
@@ -56,6 +61,10 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^6.0.0",
+    "@types/bootstrap": "^4.5.0",
+    "@types/react-bootstrap": "^1.0.1",
+    "@types/react-router-bootstrap": "^0.24.5",
+    "@types/react-router-dom": "^5.1.5",
     "@types/testing-library__cypress": "^5.0.6",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
