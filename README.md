@@ -1,8 +1,10 @@
-# Blist
+# BList
 
 BList is simple web app that makes requests for books from a single endpoint.
 
 You can enter your own searches and navigate pages of results.
+
+Click [here](https://laweks-blist.netlify.app/) to see the site live!
 
 ## How to run app locally
 
