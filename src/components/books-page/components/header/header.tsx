@@ -7,8 +7,8 @@ import FormControl from "react-bootstrap/FormControl"
 import InputGroup from "react-bootstrap/InputGroup"
 import Image from "react-bootstrap/Image"
 import Jumbotron from "react-bootstrap/Jumbotron"
-import searchIcon from "../../../assets/search.svg"
-import searchLoadingIcon from "../../../assets/search-loading.svg"
+import searchIcon from "../../assets/search.svg"
+import searchLoadingIcon from "../../assets/search-loading.svg"
 
 function Header({
   onSearchInputChange,
