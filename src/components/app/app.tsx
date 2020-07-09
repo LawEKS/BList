@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom"
-import BookList from "../book-list"
+import BooksPage from "../books-page"
 import WelcomePage from "../welcome-page"
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={WelcomePage} />
-        <Route path="/explore" component={BookList} />
+        <Route path="/explore" component={BooksPage} />
         <Route path="*">
           <Redirect to="/" />
         </Route>
