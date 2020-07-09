@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container"
 import { useLocation, useHistory } from "react-router-dom"
 
 import Header from "./header"
-import Books from "./books"
+import BookList from "./book-list"
 import PageButtons from "./page-buttons"
 
 import { postBooks, Book } from "../../api"
@@ -73,7 +73,7 @@ function BooksPage() {
         onSearchInputChange={onSearchInputChange}
         handleSubmit={handleSubmit}
       />
-      <Books loading={loading} bookData={bookData} />
+      <BookList loading={loading} bookData={bookData} />
       <PageButtons
         pageNumber={pageNumber}
         searchTerm={searchTerm}

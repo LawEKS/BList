@@ -4,7 +4,13 @@ import { Book } from "../../../api"
 import BookRow from "../book-row"
 import BookDetails from "../book-details"
 
-function Books({ bookData, loading }: { bookData: Book[]; loading: boolean }) {
+function BookList({
+  bookData,
+  loading,
+}: {
+  bookData: Book[]
+  loading: boolean
+}) {
   if (loading) {
     return (
       <BookRow>
@@ -33,4 +39,4 @@ function Books({ bookData, loading }: { bookData: Book[]; loading: boolean }) {
   )
 }
 
-export default Books
+export default BookList
