@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react"
 import Container from "react-bootstrap/Container"
 import { useLocation, useHistory } from "react-router-dom"
 
-import Header from "./header"
-import BookList from "./book-list"
-import PageButtons from "./page-buttons"
+import Header from "./components/header"
+import BookList from "./components/book-list"
+import PageButtons from "./components/page-buttons"
 
 import { postBooks, Book } from "../../api"
 

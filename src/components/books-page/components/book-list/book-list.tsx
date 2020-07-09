@@ -1,6 +1,6 @@
 import React from "react"
 import Spinner from "react-bootstrap/Spinner"
-import { Book } from "../../../api"
+import { Book } from "../../../../api"
 import BookRow from "../book-row"
 import BookDetails from "../book-details"
 

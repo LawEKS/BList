@@ -1,7 +1,7 @@
 import React from "react"
 import Media from "react-bootstrap/Media"
-import bookIcon from "../../../assets/book.svg"
-import { Book } from "../../../api"
+import bookIcon from "../../assets/book.svg"
+import { Book } from "../../../../api"
 
 function BookDetails({
   book: {
