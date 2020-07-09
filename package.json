@@ -18,11 +18,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:ci": "serve -l 5000 -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:staged": "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests",
-    "cypress": "cypress open",
-    "test:integration": "cross-env CI=true cypress run --headless",
+    "test:integration": "start-server-and-test start:ci http://localhost:5000 cy:run:ci",
+    "cy": "cypress open",
+    "cy:run:ci": "cross-env CI=true cypress run --headless --config-file cypress.ci.json",
     "eject": "react-scripts eject"
   },
   "husky": {
@@ -71,6 +73,8 @@
     "eslint-plugin-react-hooks": "2.x",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "serve": "^11.3.2",
+    "start-server-and-test": "^1.11.0"
   }
 }
