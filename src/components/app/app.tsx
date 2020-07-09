@@ -5,8 +5,8 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom"
-import BookList from "./BookList"
-import Welcome from "./Welcome"
+import BookList from "../book-list"
+import Welcome from "../welcome"
 
 function App() {
   return (

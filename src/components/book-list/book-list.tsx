@@ -14,11 +14,11 @@ import Jumbotron from "react-bootstrap/Jumbotron"
 import { useLocation, useHistory } from "react-router-dom"
 import { LinkContainer } from "react-router-bootstrap"
 
-import searchIcon from "./assets/search.svg"
-import searchLoadingIcon from "./assets/search-loading.svg"
-import bookIcon from "./assets/book.svg"
+import searchIcon from "../../assets/search.svg"
+import searchLoadingIcon from "../../assets/search-loading.svg"
+import bookIcon from "../../assets/book.svg"
 
-import { postBooks, Book } from "./api"
+import { postBooks, Book } from "../../api"
 
 function Header({
   onSearchInputChange,

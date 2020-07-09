@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import BookList from "./BookList"
+import BookList from "."
 import { MemoryRouter } from "react-router-dom"
 
 describe("BookList content", () => {
