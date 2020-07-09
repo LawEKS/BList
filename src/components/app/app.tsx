@@ -6,13 +6,13 @@ import {
   Redirect,
 } from "react-router-dom"
 import BookList from "../book-list"
-import Welcome from "../welcome"
+import WelcomePage from "../welcome-page"
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/" component={WelcomePage} />
         <Route path="/explore" component={BookList} />
         <Route path="*">
           <Redirect to="/" />
