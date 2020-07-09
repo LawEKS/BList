@@ -18,7 +18,7 @@ function generateButtonLinkPaths({
   const [prevPath, nextPath] = [true, false].map((isPrev) => {
     const pageParam = `page=${isPrev ? pageNumber - 1 : pageNumber + 1}`
     const searchParam = searchTerm ? `&search=${searchTerm}` : ""
-    return `/explore?${pageParam}${searchParam}`
+    return `/books?${pageParam}${searchParam}`
   })
   return { prevPath, nextPath }
 }

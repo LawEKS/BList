@@ -13,7 +13,7 @@ describe("UI", () => {
     cy.visit("/")
     cy.findByText(/explore/i).click()
 
-    cy.url().should("include", "explore")
+    cy.url().should("include", "books")
     cy.url().should("include", "page=1")
 
     cy.wait("@books-request").should((xhr) => {
@@ -29,7 +29,7 @@ describe("UI", () => {
 
     cy.server()
     cy.route("POST", "**/api/books", "@page-1").as("books-request-1")
-    cy.visit("/explore?page=1")
+    cy.visit("/books?page=1")
     cy.wait("@books-request-1")
     cy.findByText(/prev/i).should("be.have.class", "disabled")
 
@@ -50,7 +50,7 @@ describe("UI", () => {
   it("can search books and navigate pages", () => {
     cy.server()
     cy.route("POST", "**/api/books", "fixture:books_page_1").as("books-request")
-    cy.visit("/explore?page=1")
+    cy.visit("/books?page=1")
     cy.wait("@books-request")
 
     cy.fixture("search").then(({ city }) => {

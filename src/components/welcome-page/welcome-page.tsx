@@ -17,7 +17,7 @@ function WelcomePage() {
       <Row>
         <Col>
           <ButtonGroup>
-            <Link to="/explore?page=1">Click to explore</Link>
+            <Link to="/books?page=1">Click to explore</Link>
           </ButtonGroup>
         </Col>
       </Row>
