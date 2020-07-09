@@ -13,7 +13,7 @@ cache:
 script:
   - npm test
   - npm run build
-  - npm test:integration
+  - npm run test:integration
 env:
   - CI=true
 
